@@ -1,0 +1,31 @@
+# Environment variables
+.env
+
+# Virtual environments
+.venv/
+venv/
+myenv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Hugging Face
+huggingface_cache/
+models/
+
+# LangSmith
+.langsmith/
+
+# OS
+.DS_Store
+Thumbs.db

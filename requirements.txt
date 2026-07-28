@@ -1,0 +1,33 @@
+# LangChain
+langchain
+langchain-core
+langchain-community
+langchain-groq
+langchain-openai
+langchain-anthropic
+langchain-google-genai
+langchain-huggingface
+
+# LLM APIs
+openai
+google-generativeai
+
+# Hugging Face
+transformers
+huggingface-hub
+sentence-transformers
+
+# Vector Databases
+faiss-cpu
+chromadb
+
+# PDF Processing
+pymupdf
+
+# Tokenizer
+tiktoken
+
+# Utilities
+python-dotenv
+numpy
+scikit-learn
