@@ -1,0 +1,17 @@
+Human: Hi!
+AI: Hello! How can I help you today?
+
+Human: My name is Divyansh.
+AI: Nice to meet you, Divyansh!
+
+Human: What is LangChain?
+AI: LangChain is a framework for building applications powered by large language models (LLMs).
+
+Human: What is PromptTemplate?
+AI: PromptTemplate allows you to create reusable prompts with variables.
+
+Human: Explain ChatPromptTemplate.
+AI: ChatPromptTemplate helps structure conversations using System, Human, and AI messages.
+
+Human: Thank you!
+AI: You're welcome! Happy coding.

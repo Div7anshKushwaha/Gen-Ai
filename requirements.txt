@@ -30,4 +30,8 @@ tiktoken
 # Utilities
 python-dotenv
 numpy
+pandas
 scikit-learn
+
+# UI
+streamlit
