@@ -7,7 +7,7 @@ model = ChatGroq(
     model="llama-3.3-70b-versatile",temperature=0.1,max_completion_tokens = 1000
 )
 
-result = model.invoke("suggest 5 indian men name")
+result = model.invoke("why quadratic equation are used?")
 
 print(result.content)
 

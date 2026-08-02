@@ -8,4 +8,4 @@ model = HuggingFaceEndpoint(
     task="text-generation",
 )
 
-print(model.invoke("Explain LangChain in simple words."))
+print(model.invoke("what is  quadratic equation ?."))
