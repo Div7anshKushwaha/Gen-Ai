@@ -1,0 +1,146 @@
+LangChain Retrievers - Quick Revision Notes
+
+What is a Retriever?
+
+A Retriever fetches the most relevant documents from a knowledge base
+(Vector Store, Wikipedia, Database, etc.) based on a user’s query.
+
+Workflow: User Query | v Retriever | v Knowledge Base | v Relevant
+Documents | v LLM
+
+============================================================
+
+1.  Vector Store Retriever
+
+What? - Converts a Vector Store into a Retriever. - Example: retriever =
+vector_store.as_retriever() docs = retriever.invoke(query)
+
+Why? - Provides a standard retrieval interface. - Hides vector database
+implementation.
+
+When? - Basic RAG - Semantic Search - Any Vector Database
+
+Workflow: User Query -> Retriever -> Vector Store -> Top-k Documents
+
+Advantages: - Standard interface - Easy to switch databases - Cleaner
+code
+
+============================================================
+
+2.  MMR Retriever (Maximum Marginal Relevance)
+
+What? - Retrieves documents that are both relevant and diverse.
+
+Why? - Avoids duplicate or nearly identical documents.
+
+When? - Duplicate documents - Large knowledge bases
+
+Workflow: User Query -> Similarity Search -> MMR Ranking -> Relevant +
+Diverse Documents
+
+Important Parameters: - search_type=“mmr” - k = Number of documents -
+lambda_mult: 1.0 = More relevance 0.5 = Balanced 0.0 = More diversity
+
+Advantages: - Less repetition - Better context - Better answer quality
+
+Disadvantages: - Slightly slower
+
+============================================================
+
+3.  MultiQuery Retriever
+
+What? - Uses an LLM to generate multiple versions of the user’s query. -
+Searches each query separately. - Merges results and removes duplicates.
+
+Why? - Improves recall by handling different phrasings.
+
+When? - Ambiguous questions - Large knowledge bases
+
+Workflow: User Query | v LLM | v Generate Multiple Queries | v Retriever
+| v Merge Results | v Remove Duplicates
+
+Advantages: - Better recall - Better semantic search
+
+Disadvantages: - Extra LLM call - Slower
+
+============================================================
+
+4.  Contextual Compression Retriever
+
+What? - Retrieves documents first. - Uses an LLM to remove irrelevant
+content. - Returns only useful sentences.
+
+Why? - Saves tokens and improves answer quality.
+
+When? - Large PDFs - Books - Long documents
+
+Workflow: User Query | v Retriever | v Documents | v LLM Compressor | v
+Relevant Sentences
+
+Advantages: - Less token usage - Faster generation - Better answers
+
+Disadvantages: - Extra LLM call
+
+============================================================
+
+Comparison
+
+Vector Store Retriever - Uses LLM: No - Best For: Basic RAG - Improves:
+Standard retrieval
+
+MMR Retriever - Uses LLM: No - Best For: Duplicate documents - Improves:
+Diversity
+
+MultiQuery Retriever - Uses LLM: Yes - Best For: Ambiguous queries -
+Improves: Recall
+
+Contextual Compression Retriever - Uses LLM: Yes - Best For: Long
+documents - Improves: Token efficiency
+
+============================================================
+
+Which Retriever Should I Use?
+
+Basic RAG -> Vector Store Retriever
+
+Too many duplicate results -> MMR Retriever
+
+Retriever missing information -> MultiQuery Retriever
+
+Large documents / PDFs -> Contextual Compression Retriever
+
+============================================================
+
+Interview Definitions
+
+Retriever: Fetches the most relevant documents for a user’s query.
+
+Vector Store Retriever: A wrapper around a vector database that provides
+a standard retrieval interface.
+
+MMR Retriever: Retrieves relevant and diverse documents to reduce
+redundancy.
+
+MultiQuery Retriever: Uses an LLM to generate multiple semantic versions
+of a query to improve recall.
+
+Contextual Compression Retriever: Retrieves documents and compresses
+them to only the relevant parts before sending them to the LLM.
+
+============================================================
+
+One-Line Memory Tricks
+
+-   Vector Store Retriever -> Find similar documents.
+-   MMR Retriever -> Find similar but non-repetitive documents.
+-   MultiQuery Retriever -> Search using multiple versions of the query.
+-   Contextual Compression Retriever -> Retrieve first, then remove
+    irrelevant text.
+
+============================================================
+
+RAG Pipeline
+
+Documents | v Document Loader | v Text Splitter | v Embedding Model | v
+Vector Store | v Retriever | v Relevant Documents | v LLM | v Final
+Answer
