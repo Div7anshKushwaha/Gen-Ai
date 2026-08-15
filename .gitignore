@@ -29,3 +29,8 @@ models/
 # OS
 .DS_Store
 Thumbs.db
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local Anaconda projects
+anaconda_projects/
